@@ -1,0 +1,13 @@
+<div id="loginPanel">
+    <h2>Login</h2>
+    {{#if error}}
+        <p class="error">Failed to log in, reason: {{error}}</p>
+    {{/if}}
+    <form action="/login" method="POST" hx-post="/login" hx-swap="outerHTML" hx-target="body">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <input type="submit" value="Login">
+    </form>
+</div>

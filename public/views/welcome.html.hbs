@@ -1,0 +1,10 @@
+<h1>Registration Successful!</h1>
+    {{#if error}}
+        <p class="error">{{error}}</p>
+        {{> registrationPanel }}
+    {{else}}
+        <p>
+            Welcome {{username}}!
+            You have registered with the following address: {{email}}
+        </p>
+    {{/if}}
