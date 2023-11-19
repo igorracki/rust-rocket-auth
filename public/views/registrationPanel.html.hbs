@@ -1,5 +1,6 @@
 <div id="registrationPanel">
     <h2>Register</h2>
+        <p class="error">{{error}}</p>
     <form action="/register" method="POST" hx-post="/register" hx-swap="outerHTML" hx-target="body">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" required>
