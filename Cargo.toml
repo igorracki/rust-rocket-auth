@@ -1,0 +1,12 @@
+[package]
+name = "rocket-auth"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lazy_static = "1.4.0"
+rocket = "0.5.0"
+rocket_contrib = { version = "0.4.11", features = ["json"] }
+rocket_dyn_templates = { version = "0.1.0", features = ["handlebars"] }
+rust-crypto = "0.2.36"
+serde = "1.0.192"
