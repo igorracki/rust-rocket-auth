@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use rocket::form::Form;
 use rocket_dyn_templates::Template;
 
-use crate::{models::{UserRegistration, User, UserLogin}, utils::{insert_user, verify_password}, data::USERS};
+use crate::{models::{UserRegistration, User, UserLogin}, utils::verify_password, data::{insert_user, find_by_email}};
 
 #[rocket::get("/")]
 pub fn index() -> Template {
@@ -27,11 +27,10 @@ pub fn register(user_registration: Form<UserRegistration>) -> Template {
 
 #[rocket::post("/login", data="<user_login>")]
 pub fn login(user_login: Form<UserLogin>) -> Template {
-    let user_map = USERS.read().unwrap();
     let mut context = HashMap::new();
     let user_login_info: UserLogin = user_login.into_inner();
 
-    if let Some(user) = user_map.get(&user_login_info.email) {
+    if let Some(user) = find_by_email(&user_login_info.email) {
         if verify_password(&user_login_info.password, &user.password) {
             context.insert("username".to_string(), user.username.clone());
             return Template::render("userArea", &context);
