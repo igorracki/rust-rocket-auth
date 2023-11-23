@@ -18,12 +18,12 @@ pub struct User {
     pub password: String,
 }
 
-impl From<UserRegistration> for User {
-    fn from(user_registration: UserRegistration) -> Self {
+impl Into<User> for UserRegistration {
+    fn into(self) -> User {
         User {
-            email: user_registration.email,
-            username: user_registration.username,
-            password: user_registration.password,
+            email: self.email,
+            username: self.username,
+            password: self.password,
         }
     }
 }
