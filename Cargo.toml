@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 bcrypt = "0.15.0"
+chrono = "0.4.31"
 jsonwebtoken = "9.1.0"
 lazy_static = "1.4.0"
 rocket = "0.5.0"

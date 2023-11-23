@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 #[derive(rocket::FromForm)]
 pub struct UserRegistration {
     pub email: String,
@@ -28,3 +30,9 @@ impl Into<User> for UserRegistration {
     }
 }
 
+#[derive(Deserialize, Serialize)]
+pub struct Claim {
+    pub sub: String,
+    pub exp: usize,
+    pub role: String,
+}
