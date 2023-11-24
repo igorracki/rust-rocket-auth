@@ -25,8 +25,7 @@ pub fn generate_token(username: &str) -> Result<String, String> {
         role: "user".to_owned(),
     };
     let header: Header = Header::new(Algorithm::HS512);
-    let token: Result<String, String> = jsonwebtoken::encode(&header, &claims, &EncodingKey::from_secret(JWT_SECRET)).map_err(|e| e.to_string());
-    return token;
+    return jsonwebtoken::encode(&header, &claims, &EncodingKey::from_secret(JWT_SECRET)).map_err(|e| e.to_string());
 }
 
 pub fn validate_token(token: &str) -> Result<Claim, String> {
